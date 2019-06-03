@@ -19,6 +19,7 @@ public class UserMealsUtil {
         getFilteredWithExceeded(mealList, LocalTime.of(7, 0), LocalTime.of(12, 0), 2000);
 //        .toLocalDate();
 //        .toLocalTime();
+
     }
 
     public static List<UserMealWithExceed> getFilteredWithExceeded(List<UserMeal> mealList, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
@@ -30,7 +31,7 @@ public class UserMealsUtil {
             thisObjDate = userMeal.getDateTime().toLocalDate();
 
             caloriesPerDayList.merge(thisObjDate, userMeal.getCalories(), (oldVal, newVal) -> oldVal + newVal);
-            //код соответствует:
+            //код соответствует, работает быстрее:
             /*
             if (caloriesPerDayList.containsKey(thisObjDate))
                 caloriesPerDayList.replace(thisObjDate, caloriesPerDayList.get(thisObjDate) + userMeal.getCalories());
@@ -46,12 +47,9 @@ public class UserMealsUtil {
                 if (TimeUtil.isBetween(userMeal.getDateTime().toLocalTime(), startTime, endTime)) {
 
                     if (caloriesPerDayList.get(userMeal.getDateTime().toLocalDate()) > caloriesPerDay) {
-                        userMealWithExceedsList.add(new UserMealWithExceed(
-                                userMeal.getDateTime(),
-                                userMeal.getDescription(),
-                                userMeal.getCalories(),
-                                true
-                        ));
+                        userMealWithExceedsList.add(new UserMealWithExceed(userMeal, true));
+                    } else {
+                        userMealWithExceedsList.add(new UserMealWithExceed(userMeal, false));
                     }
                 }
             }

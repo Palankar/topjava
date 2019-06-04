@@ -1,4 +1,4 @@
-package ru.javawebinar.topjava.model;
+package main.java.ru.javawebinar.topjava.util.model;
 
 import java.time.LocalDateTime;
 

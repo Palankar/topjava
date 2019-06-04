@@ -1,7 +1,7 @@
-package main.java.ru.javawebinar.topjava.util.util;
+package main.java.ru.javawebinar.topjava.util;
 
-import main.java.ru.javawebinar.topjava.util.model.UserMeal;
-import main.java.ru.javawebinar.topjava.util.model.UserMealWithExceed;
+import main.java.ru.javawebinar.topjava.model.UserMeal;
+import main.java.ru.javawebinar.topjava.model.UserMealWithExceed;
 
 import java.time.*;
 import java.util.*;

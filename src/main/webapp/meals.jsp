@@ -6,6 +6,10 @@
 <html>
 <head>
     <title>Meal list</title>
+
+    <%--
+    Заранее задает два вида стиля под разные тексты
+    --%>
     <style>
         .normal {
             color: green;
@@ -21,15 +25,31 @@
     <h3><a href="index.html">Home</a></h3>
     <hr/>
     <h2>Meals</h2>
+
+    <%--
+    Действие создания Meal, которое вешается на гиперссылку. Вложенный from action в href.
+    --%>
+    <a href="meals?action=create">Add Meal</a>
+    <br><br>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
             <th>Date</th>
             <th>Description</th>
             <th>Calories</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
+
+        <%--
+        Перебор всех объектов из параметра meals, в котором лежит List из MealTo объектов с репозитория
+        --%>
         <c:forEach items="${meals}" var="meal">
+
+            <%--
+            Связь с экземпляром класса MealTo по id "meal"
+            --%>
             <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.MealTo"/>
             <tr class="${meal.excess ? 'excess' : 'normal'}">
                 <td>
@@ -38,8 +58,17 @@
                         <%--${fn:replace(meal.dateTime, 'T', ' ')}--%>
                         ${fn:formatDateTime(meal.dateTime)}
                 </td>
+                <%--
+                Вывод описания и колорий по текущему meal
+                --%>
                 <td>${meal.description}</td>
                 <td>${meal.calories}</td>
+
+                <%--
+                Гиперссылкеи с action update и delete по id, полученному из данного meal
+                --%>
+                <td><a href="meals?action=update&id=${meal.id}">Update</a></td>
+                <td><a href="meals?action=delete&id=${meal.id}">Delete</a></td>
             </tr>
         </c:forEach>
     </table>

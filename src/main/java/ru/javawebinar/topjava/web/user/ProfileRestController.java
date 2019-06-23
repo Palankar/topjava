@@ -4,6 +4,9 @@ import ru.javawebinar.topjava.model.User;
 
 import static ru.javawebinar.topjava.web.SecurityUtil.authUserId;
 
+/*
+Контроллер, где авторизованный пользователь будет работать со своими данными
+*/
 public class ProfileRestController extends AbstractUserController {
 
     public User get() {

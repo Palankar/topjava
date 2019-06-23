@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+/*
+Типичный Bean. Есть лишь поля и геттеры/сеттеры
+ */
 public class Meal {
     private Integer id;
 

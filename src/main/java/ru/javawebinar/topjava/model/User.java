@@ -6,6 +6,9 @@ import java.util.Set;
 
 import static ru.javawebinar.topjava.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
 
+/*
+Типичный Bean. Есть лишь поля и геттеры/сеттеры
+ */
 public class User extends AbstractNamedEntity {
 
     private String email;
